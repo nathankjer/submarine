@@ -15,6 +15,18 @@ To work with and compile your Sass files on the fly start:
 
 - `$ gulp watch`
 
+## Using Owl Carousel 2
+```html
+<div class="owl-carousel owl-theme">
+  <div class="item">...</div>
+</div>
+```
+
+## Using Font Awesome 5
+```html
+<i class="fab ..."></i>
+```
+
 Licenses & Credits
 =
 - Understrap: https://understrap.com | https://github.com/understrap/understrap (Code licensed under GNU General Public License v2.0)
