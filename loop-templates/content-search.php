@@ -1,8 +1,10 @@
 <?php
 /**
- * Search results partial template.
+ * Template part for displaying results in search pages
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package submarine
  */
 
 ?>
@@ -17,7 +19,7 @@
 
 			<div class="entry-meta">
 
-				<?php understrap_posted_on(); ?>
+				<?php submarine_posted_on(); ?>
 
 			</div><!-- .entry-meta -->
 
@@ -33,7 +35,7 @@
 
 	<footer class="entry-footer">
 
-		<?php understrap_entry_footer(); ?>
+		<?php submarine_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

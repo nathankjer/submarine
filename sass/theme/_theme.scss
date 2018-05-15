@@ -1,1 +1,105 @@
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+.nav-tabs{
+    margin-bottom:15px;
+}
+
+.progress{
+    margin-bottom:10px;
+}
+
+.footer-links li{
+    float:left;
+}
+
+.footer-links .nav-link {
+    padding: .5rem 1rem .5rem 0;
+}
+
+.social-links li{
+    float:right;
+}
+
+.social-links .nav-link {
+    padding: .5rem 0 .5rem 1rem;
+}
+
+#colophon p, #colophon h1, #colophon h2, #colophon h3, #colophon h4{
+    clear:left;
+    margin-bottom:0;
+}
+
+#wrapper-post-image {
+	max-height: 400px;
+	overflow: hidden;
+	padding:0;
+}
+
+.widget {
+	padding:2em 0;
+}
+
+.wp-post-image {
+	width:100%;
+	margin-bottom:1em;
+}
+
+dl, ol, ul {
+	padding-left: 1.2em;
+	margin-left: 0;
+}
+
+img {
+	object-fit: cover;
+}
+
+.badge {
+	line-height:inherit;
+}
+
+button:focus {
+	outline:0;
+}
+
+#page-wrapper {
+	min-height:90vh;
+}
+
+#wrapper-footer {
+	border-top: 1px solid rgba(0,0,0,0.1);
+	margin-top:2em;
+}
+
+textarea {
+	background-color:#FFF;
+	border-radius: 5px;
+}
+
+input, textarea {
+	border: 1px solid rgba(0,0,0,0.1);
+}
+
+.form-control, .form-control:focus {
+	background-color:#FFF;
+}
+
+*:focus {
+	outline: none;
+}
+
+a {
+	text-decoration:none!important;
+}
+
+.owl-item img {
+	max-height:400px;
+}
+
+.navbar-brand {
+	max-width:150px;
+}

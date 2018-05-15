@@ -1,13 +1,15 @@
 <?php
 /**
- * The template for displaying search results pages.
+ * The template for displaying search results pages
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ *
+ * @package submarine
  */
 
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'submarine_container_type' );
 
 ?>
 
@@ -28,7 +30,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 						
 							<h1 class="page-title"><?php printf(
 							/* translators:*/
-							 esc_html__( 'Search Results for: %s', 'understrap' ),
+							 esc_html__( 'Search Results for: %s', 'submarine' ),
 								'<span>' . get_search_query() . '</span>' ); ?></h1>
 
 					</header><!-- .page-header -->
@@ -56,7 +58,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
+			<?php submarine_pagination(); ?>
+
+		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>

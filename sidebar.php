@@ -1,8 +1,10 @@
 <?php
 /**
- * The sidebar containing the main widget area.
+ * The sidebar containing the main widget area
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package submarine
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

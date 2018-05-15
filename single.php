@@ -1,12 +1,14 @@
 <?php
 /**
- * The template for displaying all single posts.
+ * The template for displaying all single posts
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package submarine
  */
 
 get_header();
-$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'submarine_container_type' );
 ?>
 
 <div class="wrapper" id="single-wrapper">
@@ -24,7 +26,7 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 					<?php get_template_part( 'loop-templates/content', 'single' ); ?>
 
-						<?php understrap_post_nav(); ?>
+						<?php submarine_post_nav(); ?>
 
 					<?php
 					// If comments are open or we have at least one comment, load up the comment template.
@@ -36,6 +38,8 @@ $container   = get_theme_mod( 'understrap_container_type' );
 				<?php endwhile; // end of the loop. ?>
 
 			</main><!-- #main -->
+
+		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>

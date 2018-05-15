@@ -1,13 +1,17 @@
 <?php
 /**
- * Post rendering content according to caller of get_template_part.
+ * Template part for displaying posts
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package submarine
  */
 
 ?>
 
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+
+	<a href="<?php the_permalink($post->ID) ?>"><?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?></a>
 
 	<header class="entry-header">
 
@@ -17,14 +21,12 @@
 		<?php if ( 'post' == get_post_type() ) : ?>
 
 			<div class="entry-meta">
-				<?php understrap_posted_on(); ?>
+				<?php submarine_posted_on(); ?>
 			</div><!-- .entry-meta -->
 
 		<?php endif; ?>
 
 	</header><!-- .entry-header -->
-
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 
 	<div class="entry-content">
 
@@ -34,7 +36,7 @@
 
 		<?php
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'submarine' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -43,7 +45,7 @@
 
 	<footer class="entry-footer">
 
-		<?php understrap_entry_footer(); ?>
+		<?php submarine_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

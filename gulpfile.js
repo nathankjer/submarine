@@ -20,11 +20,54 @@ var cleanCSS = require( 'gulp-clean-css' );
 var gulpSequence = require( 'gulp-sequence' );
 var replace = require( 'gulp-replace' );
 var autoprefixer = require( 'gulp-autoprefixer' );
-var rev = require('gulp-rev');
 
 // Configuration file to keep your code DRY
 var cfg = require( './gulpconfig.json' );
 var paths = cfg.paths;
+
+// Run:
+// gulp sass + cssnano + rename
+// Prepare the min.css for production (with 2 pipes to be sure that "theme.css" == "theme.min.css")
+gulp.task( 'scss-for-prod', function() {
+    var source =  gulp.src( paths.sass + '/*.scss' )
+        .pipe( plumber({
+            errorHandler: function( err ) {
+                console.log( err );
+                this.emit( 'end' );
+            }
+        }) )
+        .pipe( sourcemaps.init({ loadMaps: true }) )
+        .pipe( sass() );
+
+    var pipe1 = source.pipe( clone() )
+        .pipe( sourcemaps.write( undefined, { sourceRoot: null } ) )
+        .pipe( gulp.dest( paths.css ) )
+        .pipe( rename( 'custom-editor-style.css' ) );
+
+     var pipe2 = source.pipe( clone() )
+            .pipe( cleanCSS( { compatibility: '*' } ) )
+            .pipe( rename( { suffix: '.min' } ) )
+            .pipe( sourcemaps.write( './' ) )
+            .pipe( gulp.dest( paths.css ) );
+        return merge( pipe1, pipe2 );
+});
+
+// Run:
+// gulp sourcemaps + sass + reload(browserSync)
+// Prepare the child-theme.css for the development environment
+gulp.task( 'scss-for-dev', function() {
+    gulp.src( paths.sass + '/*.scss' )
+        .pipe( plumber( {
+            errorHandler: function( err ) {
+                console.log( err );
+                this.emit( 'end' );
+            }
+        } ) )
+        .pipe( sourcemaps.init({ loadMaps: true }) )
+        .pipe( sass() )
+        .pipe( sourcemaps.write( undefined, { sourceRoot: null } ) )
+        .pipe( gulp.dest( paths.css ) );
+});
 
 gulp.task( 'watch-scss', ['browser-sync'], function() {
     gulp.watch( paths.sass + '/**/*.scss', ['scss-for-dev'] );
@@ -95,16 +138,6 @@ gulp.task( 'cssnano', function() {
     .pipe( gulp.dest( paths.css ) );
 });
 
-gulp.task( 'rev', function() {
-  // by default, gulp would pick `assets/css` as the base,
-  // so we need to set it explicitly:
-  gulp.src([paths.css + '/theme.min.css', paths.js + '/theme.min.js'], {base: './'})
-    .pipe(rev())
-    .pipe(gulp.dest('./'))  // write rev'd assets to build dir
-    .pipe(rev.manifest())
-    .pipe(gulp.dest('./'));  // write manifest to build dir
-});
-
 gulp.task( 'minifycss', function() {
   return gulp.src( paths.css + '/theme.css' )
   .pipe( sourcemaps.init( { loadMaps: true } ) )
@@ -127,7 +160,7 @@ gulp.task( 'cleancss', function() {
 });
 
 gulp.task( 'styles', function( callback ) {
-    gulpSequence( 'sass', 'minifycss', 'rev' )( callback );
+    gulpSequence( 'sass', 'minifycss' )( callback );
 } );
 
 // Run:
@@ -140,11 +173,11 @@ gulp.task( 'browser-sync', function() {
 // Run:
 // gulp watch-bs
 // Starts watcher with browser-sync. Browser-sync reloads page automatically on your browser
-gulp.task( 'watch-bs', ['browser-sync', 'watch', 'scripts'], function() {
+gulp.task( 'watch-bs', ['browser-sync', 'watch', 'scripts'], function() { 
 } );
 
-// Run:
-// gulp scripts.
+// Run: 
+// gulp scripts. 
 // Uglifies and concat all JS files into one
 gulp.task( 'scripts', function() {
     var scripts = [
@@ -168,8 +201,6 @@ gulp.task( 'scripts', function() {
   gulp.src( scripts )
     .pipe( concat( 'theme.js' ) )
     .pipe( gulp.dest( paths.js ) );
-
-  rev();
 });
 
 // Deleting any file inside the /src folder
@@ -210,6 +241,10 @@ gulp.task( 'copy-assets', function() {
 // _s JS files into /src/js
     gulp.src( paths.node + 'undescores-for-npm/js/skip-link-focus-fix.js' )
         .pipe( gulp.dest( paths.dev + '/js' ) );
+
+// _s JS files into /js
+    gulp.src( paths.node + 'undescores-for-npm/js/skip-link-focus-fix.js' )
+        .pipe( gulp.dest( paths.js + paths.vendor ) );
 
 // Copy Popper JS files
     gulp.src( paths.node + 'popper.js/dist/umd/popper.min.js' )

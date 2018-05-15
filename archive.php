@@ -1,17 +1,17 @@
 <?php
 /**
- * The template for displaying archive pages.
+ * The template for displaying archive pages
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package understrap
+ * @package submarine
  */
 
 get_header();
 ?>
 
 <?php
-$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'submarine_container_type' );
 ?>
 
 <div class="wrapper" id="archive-wrapper">
@@ -47,6 +47,8 @@ $container   = get_theme_mod( 'understrap_container_type' );
 						get_template_part( 'loop-templates/content', get_post_format() );
 						?>
 
+						<hr>
+
 					<?php endwhile; ?>
 
 				<?php else : ?>
@@ -58,7 +60,9 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
+			<?php submarine_pagination(); ?>
+
+		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>

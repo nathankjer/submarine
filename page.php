@@ -1,20 +1,32 @@
 <?php
 /**
- * The template for displaying all pages.
+ * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
+ * and that other 'pages' on your WordPress site may use a
  * different template.
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package submarine
  */
 
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'submarine_container_type' );
 
 ?>
+
+<?php if (has_post_thumbnail( $post->ID ) ): ?>
+
+	<div class="wrapper" id="wrapper-post-image">
+	
+		<?php echo get_the_post_thumbnail( $post->ID, 'full', array('class' => 'img-responsive') ); ?>
+	
+	</div>
+
+<?php endif; ?>
 
 <div class="wrapper" id="page-wrapper">
 
@@ -41,6 +53,8 @@ $container   = get_theme_mod( 'understrap_container_type' );
 				<?php endwhile; // end of the loop. ?>
 
 			</main><!-- #main -->
+
+		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>

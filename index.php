@@ -1,24 +1,21 @@
 <?php
 /**
- * The main template file.
+ * The main template file
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
  * It is used to display a page when nothing more specific matches a query.
  * E.g., it puts together the home page when no home.php file exists.
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package submarine
  */
 
 get_header();
 
-$container   = get_theme_mod( 'understrap_container_type' );
+$container   = get_theme_mod( 'submarine_container_type' );
 ?>
-
-<?php if ( is_front_page() && is_home() ) : ?>
-	<?php get_template_part( 'global-templates/hero' ); ?>
-<?php endif; ?>
 
 <div class="wrapper" id="index-wrapper">
 
@@ -33,6 +30,13 @@ $container   = get_theme_mod( 'understrap_container_type' );
 
 				<?php if ( have_posts() ) : ?>
 
+					<header class="page-header">
+						<?php
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+						the_archive_description( '<div class="taxonomy-description">', '</div>' );
+						?>
+					</header><!-- .page-header -->
+
 					<?php /* Start the Loop */ ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
@@ -46,6 +50,8 @@ $container   = get_theme_mod( 'understrap_container_type' );
 						 */
 						get_template_part( 'loop-templates/content', get_post_format() );
 						?>
+						
+						<hr>
 
 					<?php endwhile; ?>
 
@@ -58,11 +64,12 @@ $container   = get_theme_mod( 'understrap_container_type' );
 			</main><!-- #main -->
 
 			<!-- The pagination component -->
-			<?php understrap_pagination(); ?>
+			<?php submarine_pagination(); ?>
+
+		</div><!-- #primary -->
 
 		<!-- Do the right sidebar check -->
 		<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
-		
 
 	</div><!-- .row -->
 

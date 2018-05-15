@@ -2,7 +2,7 @@
 /**
  * Single post partial template.
  *
- * @package understrap
+ * @package submarine
  */
 
 ?>
@@ -14,13 +14,11 @@
 
 		<div class="entry-meta">
 
-			<?php understrap_posted_on(); ?>
+			<?php submarine_posted_on(); ?>
 
 		</div><!-- .entry-meta -->
 
 	</header><!-- .entry-header -->
-
-	<?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
 
 	<div class="entry-content">
 
@@ -28,7 +26,7 @@
 
 		<?php
 		wp_link_pages( array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'understrap' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'submarine' ),
 			'after'  => '</div>',
 		) );
 		?>
@@ -37,7 +35,7 @@
 
 	<footer class="entry-footer">
 
-		<?php understrap_entry_footer(); ?>
+		<?php submarine_entry_footer(); ?>
 
 	</footer><!-- .entry-footer -->
 

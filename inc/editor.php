@@ -1,27 +1,27 @@
 <?php
 /**
- * Understrap modify editor
+ * Submarine modify editor
  *
- * @package understrap
+ * @package submarine
  */
 
 /**
  * Registers an editor stylesheet for the theme.
  */
 
-add_action( 'admin_init', 'understrap_wpdocs_theme_add_editor_styles' );
+add_action( 'admin_init', 'submarine_wpdocs_theme_add_editor_styles' );
 
-if ( ! function_exists ( 'understrap_wpdocs_theme_add_editor_styles' ) ) {
-  function understrap_wpdocs_theme_add_editor_styles() {
+if ( ! function_exists ( 'submarine_wpdocs_theme_add_editor_styles' ) ) {
+  function submarine_wpdocs_theme_add_editor_styles() {
     add_editor_style( 'css/custom-editor-style.min.css' );
   }
 }
 
 // Add TinyMCE style formats.
-add_filter( 'mce_buttons_2', 'understrap_tiny_mce_style_formats' );
+add_filter( 'mce_buttons_2', 'submarine_tiny_mce_style_formats' );
 
-if ( ! function_exists ( 'understrap_tiny_mce_style_formats' ) ) {
-  function understrap_tiny_mce_style_formats( $styles ) {
+if ( ! function_exists ( 'submarine_tiny_mce_style_formats' ) ) {
+  function submarine_tiny_mce_style_formats( $styles ) {
 
       array_unshift( $styles, 'styleselect' );
       return $styles;
@@ -29,10 +29,10 @@ if ( ! function_exists ( 'understrap_tiny_mce_style_formats' ) ) {
 }
 
 
-add_filter( 'tiny_mce_before_init', 'understrap_tiny_mce_before_init' );
+add_filter( 'tiny_mce_before_init', 'submarine_tiny_mce_before_init' );
 
-if ( ! function_exists ( 'understrap_tiny_mce_before_init' ) ) {
-  function understrap_tiny_mce_before_init( $settings ) {
+if ( ! function_exists ( 'submarine_tiny_mce_before_init' ) ) {
+  function submarine_tiny_mce_before_init( $settings ) {
 
     $style_formats = array(
         array(

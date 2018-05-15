@@ -1,8 +1,10 @@
 <?php
 /**
- * Understrap functions and definitions
+ * submarine functions and definitions
  *
- * @package understrap
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package submarine
  */
 
 /**
@@ -58,7 +60,7 @@ require get_template_directory() . '/inc/jetpack.php';
 /**
  * Load custom WordPress nav walker.
  */
-require get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+require get_template_directory() . '/inc/bootstrap-wp-navwalker.php';
 
 /**
  * Load WooCommerce functions.
