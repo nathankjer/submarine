@@ -15,6 +15,8 @@ To work with and compile your Sass files on the fly start:
 
 - `$ gulp watch`
 
+Now all sass and javascript automatically compile into the `css` and `js` folders respectively. Add custom code to the `sass/theme/_theme.scss` and `src/js/custom-javascript.js` files.
+
 ## Using Owl Carousel 2
 ```html
 <div class="owl-carousel owl-theme">
