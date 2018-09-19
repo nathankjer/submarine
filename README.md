@@ -1,7 +1,5 @@
 # Submarine
-A sandwich shop Wordpress theme by @kjerish
-
-![Submarine:A sandwich shop Wordpress theme by @kjerish](screenshot.png?raw=true "Submarine: A sandwich shop Wordpress theme by @kjerish")
+A sandwich shop Wordpress theme by @nathankjer
 
 ## Developing With npm, Gulp and SASS and [Browser Sync][1]
 
